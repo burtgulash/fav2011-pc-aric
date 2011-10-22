@@ -3,7 +3,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage{a4wide}
 
-\title{Semestrální práce PC}
+\usepackage[pdf]{pstricks}
+
+\title{Aritmetické kódování}
 \author{Tomáš Maršálek}
 \date{\today}
 
@@ -42,7 +44,23 @@ vybere svůj subinterval. Tímto způsobem se zakódují všechny znaky. Aritmet
 kódování vlastně využívá nekonečné dělitelnosti množiny reálných čísel.
 
 \paragraph{Příklad}
-Sem příde diagram
+Pravděpodobnosti výskytu znaků jsou $A : 0.3$, $B : 0.5$, $C : 0.2$. Kódované
+slovo je $BAC$. V každém kroku je zvýrazněn právě vybraný interval a jeho
+rozdělení. Poté co určíme poslední subinterval, vybereme z něj libovolné číslo.
+To bude tvořit aritmetický kód zprávy.
+\input{figure1} \\[1cm]
+
+Libovolné číslo z daného intrevalu vybíráme s co nejkratší délkou, v tomto případě
+je kód zprávy $0.43$.
+
+\paragraph{}
+Pro kratší kódy chceme, aby se vybíraly co nejdelší subintervaly. Pak zůstane 
+délka intervalu velká a nebudeme potřebovat tolik číslic k zapsání výsledného čísla.
+Proto je důležité mít správně zmapované pravděpodobnosti znaků, více frekventované
+znaky získají širší interval a tím pádem dochází ke kompresi. Kdyby měl program
+k~dispozici informaci, že všechny znaky jsou stejně pravděpodobné, nedošlo by k žádné
+změně velikosti po zakódování (otestováno).
+
 \section{Implementace}
 \section{Závěr}
 \end{document}
