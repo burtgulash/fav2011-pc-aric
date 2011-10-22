@@ -6,7 +6,6 @@
 #include "coder.h"
 #include "header.h"
 
-#define MUL_SHIFT(a, b) (((a) >> 16) * (b) + (((a) & 0xFFFF) * (b) >> 16))
 
 uint32_t high = INTERVAL_MAX;
 uint32_t low = INTERVAL_MIN;
@@ -91,15 +90,15 @@ void compress()
 
 void encode(int symbol)
 {
-    uint32_t range = high - low;
+    uint64_t range = high - low;
     if (range <= PRECISION_LIMIT) {
         flush_word();
         range = high - low;
     }
 
     /* update interval boundaries */
-    high = low + MUL_SHIFT(range, freq[symbol + 1]) - 1;
-    low = low + MUL_SHIFT(range, freq[symbol]) + 1;
+    high = low + (range * freq[symbol + 1] >> 16) - 1;
+    low  = low + (range * freq[symbol] >> 16) + 1;
 
     assert(low <= high);
 
@@ -144,7 +143,7 @@ int decompress()
 
 int decode()
 {
-    uint32_t range = high - low;
+    uint64_t range = high - low;
     if (range <= PRECISION_LIMIT) {
         read_word();
         range = high - low;
@@ -164,8 +163,8 @@ int decode()
     coded_bytes++;
 
     /* update interval boundaries */
-    high = low + MUL_SHIFT(range, freq[symbol + 1]) - 1;
-    low = low + MUL_SHIFT(range, freq[symbol]) + 1;
+    high = low + (range * freq[symbol + 1] >> 16) - 1;
+    low  = low + (range * freq[symbol] >> 16) + 1;
 
     if (low > code || code > high)
         return FAILURE;
