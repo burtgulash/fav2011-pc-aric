@@ -8,10 +8,11 @@
 
 #define W 16
 #define SHIFT 24
-#define PRECISION_LIMIT 0x0000FFFFUL
+#define PRECISION_LIMIT (uint32_t) 0x0000FFFFUL
+#define MASK (uint32_t) 0x00FFFFFFUL
 
-#define INTERVAL_MAX 0xFFFFFFFFUL
-#define INTERVAL_MIN 0x00000000UL
+#define INTERVAL_MAX (uint32_t) 0xFFFFFFFFUL
+#define INTERVAL_MIN (uint32_t) 0x00000000UL
 
 
 #define ENCODED 1
@@ -30,8 +31,6 @@ extern uint16_t *inverse;
 extern int coded_bytes;
 extern int orig_bytes;
 
-void encode(int c);
-int decode();
 void compress();
 int decompress();
 

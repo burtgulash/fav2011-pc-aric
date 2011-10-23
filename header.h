@@ -8,8 +8,6 @@
 
 extern FILE *in, *out;
 
-void write_short(uint16_t n, FILE * out);
-uint16_t read_short(FILE * in);
 void write_header();
 void read_header();
 
