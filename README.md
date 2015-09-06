@@ -36,6 +36,9 @@ else
 fi
 ```
 
+## Documentation
+Stub of [documentation](doc/aric.pdf) for the assignment in czech language.
+
 ## Course details
 * [KIV/PC](http://www.kiv.zcu.cz/studies/predmety/pc/) fall 2011
 * Lecturer [Ing. Kamil Ekštein, Ph.D.](https://www.kiv.zcu.cz/cz/katedra/osoby-seznam/osoba-detail.html?login=kekstein)
