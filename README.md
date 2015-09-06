@@ -22,7 +22,7 @@ Compress
 
 Decompress
 ```
-./aric -d out coder_decompressed.c
+./aric -d out.aric coder_decompressed.c
     output: 2878 bytes to 3883 bytes
 ```
 
