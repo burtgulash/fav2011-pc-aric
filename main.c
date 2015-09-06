@@ -46,7 +46,7 @@ int main(int argc, char **argv)
     double seconds;
 
     if (argc != 4 || strlen(argv[1]) != 2 || argv[1][0] != '-') {
-        printf("%s", USAGE);
+        printf("%s\n", USAGE);
         return EXIT_FAILURE;
     }
 
